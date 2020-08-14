@@ -16,18 +16,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data android:name="xposedminversion" android:value="54"/>
+
+        <meta-data android:name="xposedmodule" android:value="true"/>
+
+        <meta-data android:name="xposeddescription" android:value="脱壳机"/>
+
+        <meta-data android:name="for_camel_apps" android:value="*"/>
+
+        <meta-data
+            android:name="virtualEnvModel"
+            android:value="DISABLE" />
     </application>
 
-    <meta-data android:name="xposedminversion" android:value="54"/>
 
-    <meta-data android:name="xposedmodule" android:value="true"/>
-
-    <meta-data android:name="xposeddescription" android:value="脱壳机"/>
-
-    <meta-data android:name="for_camel_apps" android:value="*"/>
-
-    <meta-data
-        android:name="virtualEnvModel"
-        android:value="DISABLE" />
 
 </manifest>
