@@ -1,11 +1,13 @@
 package com.alien.rdex;
 
+import android.os.Build;
 import android.util.Log;
 
 import com.camel.api.CamelToolKit;
 import com.camel.api.rposed.IRposedHookLoadPackage;
 import com.camel.api.rposed.RC_MethodHook;
 import com.camel.api.rposed.RposedBridge;
+import com.camel.api.rposed.RposedHelpers;
 import com.camel.api.rposed.callbacks.RC_LoadPackage;
 
 import java.io.File;
@@ -125,9 +127,17 @@ public class HookEntry implements IRposedHookLoadPackage {
     private Object getDexInClass(Class cls) {
         Object dex = null;
         try {
-            if (cls != null) {
-                dex = getDexMethod.invoke(cls);
+            if (cls == null) {
+                return null;
             }
+
+            // 安卓7.1 可直接使用getDex方法
+            if (Build.VERSION.SDK_INT <= 25) {
+                dex = getDexMethod.invoke(cls);
+            } else {
+                throw new IllegalAccessException("安卓8上目前不支持");
+            }
+
         } catch (Throwable e) {
             Log.e(TAG, "getDexInClass  error  ", e);
         }
