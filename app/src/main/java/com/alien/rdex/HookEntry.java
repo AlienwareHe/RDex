@@ -1,20 +1,24 @@
 package com.alien.rdex;
 
 import android.os.Build;
+import android.os.Handler;
 import android.util.Log;
 
 import com.camel.api.CamelToolKit;
 import com.camel.api.rposed.IRposedHookLoadPackage;
 import com.camel.api.rposed.RC_MethodHook;
 import com.camel.api.rposed.RposedBridge;
-import com.camel.api.rposed.RposedHelpers;
 import com.camel.api.rposed.callbacks.RC_LoadPackage;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import camel.external.org.apache.commons.io.FileUtils;
 import dalvik.system.DexFile;
@@ -27,13 +31,31 @@ public class HookEntry implements IRposedHookLoadPackage {
     private static Class DexClass;
     private static Method getBytesMethod;
     private static Method getDexMethod;
+    private static boolean isJustInTime = false;
+    private static Set<ClassLoader> classLoaders = new HashSet<>();
 
     @Override
     public void handleLoadPackage(RC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         Log.i(TAG, "rdex plugin hooked start");
 
+        final RC_LoadPackage.LoadPackageParam param = loadPackageParam;
         try {
-            internalHook(loadPackageParam);
+            internalHook(param);
+
+            if (!isJustInTime) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (ClassLoader classLoader : classLoaders) {
+                            Object[] nowElements = getClassLoaderElements(classLoader);
+                            if (nowElements != null && nowElements.length != 0) {
+                                dumpAllClass(nowElements, classLoader, null);
+                            }
+                        }
+                    }
+                }, 20 * 1000);
+            }
+
         } catch (Throwable e) {
             Log.e(TAG, "rdex plugin hooked error:", e);
         }
@@ -46,7 +68,7 @@ public class HookEntry implements IRposedHookLoadPackage {
         RposedBridge.hookAllMethods(ClassLoader.class, "loadClass", new RC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                Class cls = (Class) param.getResult();
+                final Class cls = (Class) param.getResult();
                 if (cls == null) {
                     return;
                 }
@@ -67,10 +89,15 @@ public class HookEntry implements IRposedHookLoadPackage {
             return;
         }
 
-        Object[] nowElements = getClassLoaderElements(classLoader);
-        if (nowElements != null && nowElements.length != 0) {
-            dumpAllClass(nowElements, classLoader, cls);
+        if (!isJustInTime) {
+            classLoaders.add(classLoader);
+        } else {
+            Object[] nowElements = getClassLoaderElements(classLoader);
+            if (nowElements != null && nowElements.length != 0) {
+                dumpAllClass(nowElements, classLoader, cls);
+            }
         }
+
     }
 
     private void dumpAllClass(final Object[] dexElements, final ClassLoader classLoader, final Class cls) {
@@ -85,9 +112,14 @@ public class HookEntry implements IRposedHookLoadPackage {
                         dexFileField.setAccessible(true);
                         DexFile dexFile = (DexFile) dexFileField.get(dexElement);
                         //初始化每个类，防止填充式类抽取
-                        initAllClass(dexFile, classLoader);
+                        Class firstClass = initAllClass(dexFile, classLoader);
+                        if (!isJustInTime && firstClass != null) {
+                            saveDexForClass(firstClass);
+                        }
                     }
-                    saveDexForClass(cls);
+                    if (isJustInTime) {
+                        saveDexForClass(cls);
+                    }
                 } catch (Throwable e) {
                     Log.e(TAG, "dumpAllClass error", e);
                 }
@@ -120,7 +152,7 @@ public class HookEntry implements IRposedHookLoadPackage {
         if (!file.exists()) {
             //不存在的时候 在保存
             FileUtils.writeByteArrayToFile(new File(dumpDexPath), bytes);
-            Log.i(TAG, "save dex file:" + dumpDexPath);
+            Log.e(TAG, "save dex file:" + dumpDexPath);
         }
     }
 
@@ -163,9 +195,11 @@ public class HookEntry implements IRposedHookLoadPackage {
         }
     }
 
-    private synchronized void initAllClass(DexFile dexFile, final ClassLoader loader) {
+    private synchronized Class initAllClass(DexFile dexFile, final ClassLoader loader) {
         int classSize = getDexFileClassSize(dexFile);
         Log.e(TAG, "需要 加载的 getDexFileClassName个数:" + classSize);
+
+        final List<Class> initialClasses = new ArrayList<>();
 
         try {
 
@@ -173,25 +207,20 @@ public class HookEntry implements IRposedHookLoadPackage {
             while (enumeration.hasMoreElements()) {//遍历
                 final String className = enumeration.nextElement();
                 try {
-                    //对每个 classloader都进行遍历
-                    ThreadUtils.runOnMainThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                // 是否初始化需要根据对应加固手段确定，例如爱加密会设置炸弹类
-                                Class.forName(className, false, loader);
-                            } catch (Throwable ignored) {
-
-                            }
-                        }
-                    });
+                    // 对每个 classloader都进行遍历
+                    // 是否初始化需要根据对应加固手段确定，例如爱加密会设置炸弹类
+                    initialClasses.add(Class.forName(className, false, loader));
                 } catch (Throwable throwable) {
 
                 }
             }
-
+            if (!initialClasses.isEmpty()) {
+                return initialClasses.get(0);
+            }
+            return null;
         } catch (Throwable e) {
             Log.e(TAG, "init all class error:", e);
+            return null;
         }
     }
 
