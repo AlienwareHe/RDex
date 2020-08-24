@@ -115,7 +115,7 @@ public class HookEntry implements IRposedHookLoadPackage {
             return;
         }
         //判断 这个 classloader是否 需要保存
-        String dumpDexPath = CamelToolKit.whiteSdcardDirPath + "dump_" + bytes.length + ".dex";
+        String dumpDexPath = CamelToolKit.whiteSdcardDirPath + "/dump_" + bytes.length + ".dex";
         File file = new File(dumpDexPath);
         if (!file.exists()) {
             //不存在的时候 在保存
@@ -178,7 +178,8 @@ public class HookEntry implements IRposedHookLoadPackage {
                         @Override
                         public void run() {
                             try {
-                                Class.forName(className, true, loader);
+                                // 是否初始化需要根据对应加固手段确定，例如爱加密会设置炸弹类
+                                Class.forName(className, false, loader);
                             } catch (Throwable ignored) {
 
                             }
@@ -242,10 +243,11 @@ public class HookEntry implements IRposedHookLoadPackage {
         Field pathListField = null;
         Class classLoaderClass = classLoader.getClass();
         int maxFindLength = 5;
-        while (pathListField == null && (maxFindLength--) > 0) {
+        while (classLoaderClass != null && pathListField == null && (maxFindLength--) > 0) {
             try {
                 pathListField = classLoaderClass.getDeclaredField("pathList");
             } catch (Throwable e) {
+                Log.i(TAG, "get path list error:" + classLoaderClass.getClass(), e);
                 classLoaderClass = classLoaderClass.getSuperclass();
             }
         }
