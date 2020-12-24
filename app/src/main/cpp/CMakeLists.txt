@@ -6,6 +6,7 @@ add_library(
         SHARED
         native-lib.cpp
         DexUtil.cpp
+        Leb128.cpp
 )
 
 

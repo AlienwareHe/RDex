@@ -13,5 +13,5 @@ public class NativeDump {
 
     public static native void init(int apiLevel);
 
-    public static native void complete(@NonNull String dumpPath, @NonNull Object mCookie);
+    public static native void fullDump(@NonNull String dumpPath, @NonNull Object mCookie);
 }

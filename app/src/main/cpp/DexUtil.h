@@ -1,5 +1,6 @@
 //
-// Created by alienhe on 2020/12/23.
+// https://github.com/ylcangel/android_poke/blob/a9585fd0b9bee132a04fd4731883d2ace0e16f5c/method1/src/cpp/DexUtil.cpp
+// 但安卓8.0 dex_file结构体已经发生变化。。偏移量计算不准，所以用:https://github.com/KB5201314/ZjDroid/blob/15b9bf4fb5a5b62c9c5dc2402f04bdaa629b22ad/app/src/main/jni/dvmnative/dexfile_art.h
 //
 #ifndef __DEX_UTIL_H__
 #define __DEX_UTIL_H__
