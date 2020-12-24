@@ -8,6 +8,7 @@ import com.camel.api.CamelToolKit;
 import com.camel.api.rposed.IRposedHookLoadPackage;
 import com.camel.api.rposed.RC_MethodHook;
 import com.camel.api.rposed.RposedBridge;
+import com.camel.api.rposed.RposedHelpers;
 import com.camel.api.rposed.callbacks.RC_LoadPackage;
 
 import java.io.File;
@@ -33,14 +34,21 @@ public class HookEntry implements IRposedHookLoadPackage {
     private static Method getDexMethod;
     private static boolean isJustInTime = false;
     private static Set<ClassLoader> classLoaders = new HashSet<>();
+    private static String dexSaveDir = CamelToolKit.whiteSdcardDirPath + "/";
 
     @Override
     public void handleLoadPackage(RC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         Log.i(TAG, "rdex plugin hooked start");
 
-        final RC_LoadPackage.LoadPackageParam param = loadPackageParam;
+        if (!loadPackageParam.processName.equals(loadPackageParam.packageName)) {
+            Log.i(TAG, "rdex plugin not in main process,ignored:" + loadPackageParam.processName);
+            return;
+        }
+
         try {
-            internalHook(param);
+            JNILoadHelper.loadLibrary("native-lib", this.getClass().getClassLoader());
+
+            internalHook(loadPackageParam);
 
             if (!isJustInTime) {
                 new Handler().postDelayed(new Runnable() {
@@ -111,6 +119,10 @@ public class HookEntry implements IRposedHookLoadPackage {
                         Field dexFileField = dexElement.getClass().getDeclaredField("dexFile");
                         dexFileField.setAccessible(true);
                         DexFile dexFile = (DexFile) dexFileField.get(dexElement);
+                        if (dexFile == null) {
+                            Log.w(TAG, "dexFile is null........");
+                            continue;
+                        }
                         //初始化每个类，防止填充式类抽取
                         Class firstClass = initAllClass(dexFile, classLoader);
                         if (!isJustInTime && firstClass != null) {
@@ -132,13 +144,46 @@ public class HookEntry implements IRposedHookLoadPackage {
      */
     private void saveDexForClass(Class mClass) {
         try {
-            initDexInvokeMethod();
-            Object dex = getDexInClass(mClass);
-            if (dex != null) {
-                saveDexToFile((byte[]) getBytesMethod.invoke(dex));
+            if (Build.VERSION.SDK_INT <= 25) {
+                // 安卓7.1 可直接使用getDex方法
+                initDexInvokeMethod();
+                Object dex = getDexInClass(mClass);
+                if (dex != null) {
+                    saveDexToFile((byte[]) getBytesMethod.invoke(dex));
+                }
+            } else {
+                // 否则通过mCookie dumpDex
+                dumpDexByCookie(mClass);
             }
         } catch (Throwable e) {
             Log.e(TAG, "saveDexForClass error:", e);
+        }
+    }
+
+    private HashSet<Object> foundCookies = new HashSet<>();
+
+    /**
+     * 通过mCookie dump类所对应的ClassLoader下所有的dex
+     * <p>
+     * 实际上可能有很多重复行为，因为一个classloader下有很多class，因此加了个mCookie集合去重稍微减少重复
+     */
+    private void dumpDexByCookie(Class mClass) {
+        ClassLoader classLoader = mClass.getClassLoader();
+        Object pathList = RposedHelpers.getObjectField(classLoader, "pathList");
+        Object[] dexElements = (Object[]) RposedHelpers.getObjectField(pathList, "dexElements");
+        for (Object dexElement : dexElements) {
+            Object dexFile = RposedHelpers.getObjectField(dexElement, "dexFile");
+            if (dexFile == null) {
+                Log.w(TAG, "dexFile is null.....");
+                continue;
+            }
+            Object mCookie = RposedHelpers.getObjectField(dexFile, "mCookie");
+            if (foundCookies.contains(mCookie)) {
+                continue;
+            }
+            foundCookies.add(mCookie);
+            Log.i(TAG, "get mCookie:" + mCookie);
+            NativeDump.fullDump(dexSaveDir, mCookie);
         }
     }
 
@@ -162,14 +207,7 @@ public class HookEntry implements IRposedHookLoadPackage {
             if (cls == null) {
                 return null;
             }
-
-            // 安卓7.1 可直接使用getDex方法
-            if (Build.VERSION.SDK_INT <= 25) {
-                dex = getDexMethod.invoke(cls);
-            } else {
-                throw new IllegalAccessException("安卓8上目前不支持");
-            }
-
+            dex = getDexMethod.invoke(cls);
         } catch (Throwable e) {
             Log.e(TAG, "getDexInClass  error  ", e);
         }
@@ -276,7 +314,7 @@ public class HookEntry implements IRposedHookLoadPackage {
             try {
                 pathListField = classLoaderClass.getDeclaredField("pathList");
             } catch (Throwable e) {
-                Log.i(TAG, "get path list error:" + classLoaderClass.getClass(), e);
+                Log.i(TAG, "get path list error,try to find super class:" + classLoaderClass);
                 classLoaderClass = classLoaderClass.getSuperclass();
             }
         }

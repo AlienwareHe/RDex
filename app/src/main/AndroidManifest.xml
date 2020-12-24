@@ -23,7 +23,7 @@
 
         <meta-data android:name="xposeddescription" android:value="脱壳机"/>
 
-        <meta-data android:name="for_camel_apps" android:value="*"/>
+        <meta-data android:name="for_camel_apps" android:value="com.baidu.homework"/>
 
         <meta-data
             android:name="virtualEnvModel"

@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 public class NativeDump {
 
     static {
-        System.loadLibrary("native-lib");
         init(Build.VERSION.SDK_INT);
     }
 

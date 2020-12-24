@@ -1,6 +1,11 @@
 //
 // https://github.com/ylcangel/android_poke/blob/a9585fd0b9bee132a04fd4731883d2ace0e16f5c/method1/src/cpp/DexUtil.cpp
-// 但安卓8.0 dex_file结构体已经发生变化。。偏移量计算不准，所以用:https://github.com/KB5201314/ZjDroid/blob/15b9bf4fb5a5b62c9c5dc2402f04bdaa629b22ad/app/src/main/jni/dvmnative/dexfile_art.h
+// 但安卓8.0 dex_file结构体已经发生变化。。偏移量计算不准，但是思路很棒
+//
+// dex_file结构体采用了:https://github.com/KB5201314/ZjDroid/blob/15b9bf4fb5a5b62c9c5dc2402f04bdaa629b22ad/app/src/main/jni/dvmnative/dexfile_art.h
+// 与系统源码类似http://androidxref.com/8.0.0_r4/xref/art/runtime/dex_file.h
+//
+// BTW：莫不是每个安卓系统版本都需要兼容。。。
 //
 #ifndef __DEX_UTIL_H__
 #define __DEX_UTIL_H__

@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                System.loadLibrary("native-lib");
 
                 try {
                     Thread.sleep(10000);

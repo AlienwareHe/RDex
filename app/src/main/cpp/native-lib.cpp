@@ -128,10 +128,6 @@ bool toDexFiles_8_0(JNIEnv *env, jobject mCookie, std::vector<const art::DexFile
     for (jsize i = 1; i < array_size; ++i) {
         dex_files.push_back(
                 reinterpret_cast<const art::DexFile *>(static_cast<uintptr_t>(long_data[i])));
-
-        const art::DexFile* aDexFile = reinterpret_cast<const art::DexFile *>(static_cast<uintptr_t>(long_data[i]));
-        // &dex_files.at(0).baseAddr - &aDexFile.begin_ = 10
-        ALOGI("lllll");
     }
 
     return true;
