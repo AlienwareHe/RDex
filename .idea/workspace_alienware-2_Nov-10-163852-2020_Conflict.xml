@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0cec7ac6-e417-4a5e-9960-5a47f72cadd0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../apks/ratel_container-driver/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../apks/ratel_container-driver/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../apks/ratel_container-driver/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../apks/ratel_container-driver/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../com.ziroom.ziroomcustomer_6.8.5_210_jadx/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../com.ziroom.ziroomcustomer_6.8.5_210_jadx/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../com.ziroom.ziroomcustomer_6.8.5_210_jadx/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../crack-ziroom/src/main/java/com/crack/ziroom/service/QunarProxyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../crack-ziroom/src/main/java/com/crack/ziroom/utils/ZiroomEncryptUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../httpcanary_3.3.4/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../httpcanary_3.3.4/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../httpcanary_3.3.4/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../httpcanary_3.3.4/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oaid/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oaid/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oaid/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oaid/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/src/main/java/com/swift/sandhook/annotation/HookClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/src/main/java/com/swift/sandhook/annotation/HookMethod.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/src/main/java/com/swift/sandhook/annotation/HookMethodBackup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/src/main/java/com/swift/sandhook/annotation/HookMode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/src/main/java/com/swift/sandhook/annotation/HookReflectClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/src/main/java/com/swift/sandhook/annotation/MethodParams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/src/main/java/com/swift/sandhook/annotation/MethodReflectParams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/src/main/java/com/swift/sandhook/annotation/Param.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/src/main/java/com/swift/sandhook/annotation/SkipParamCheck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../annotation/src/main/java/com/swift/sandhook/annotation/ThisObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/androidTest/java/com/swift/sandhook/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/MyApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/test/Inter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/test/InterImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/test/PendingHookTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/test/TestClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/testHookers/ActivityHooker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/testHookers/CtrHook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/testHookers/CustmizeHooker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/testHookers/JniHooker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/testHookers/LogHooker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/testHookers/NewAnnotationApiHooker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/swift/sandhook/testHookers/ObjectHooker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/content_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/menu/menu_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/test/java/com/swift/sandhook/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../built/arm64-v8a/libsandhook-native.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../built/arm64-v8a/libsandhook.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../built/armeabi-v7a/libsandhook-native.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../built/armeabi-v7a/libsandhook.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doc/doc.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doc/res/inline_flow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doc/res/pc_relate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doc/res/sandhook_arch.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hookers/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hookers/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hookers/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hookers/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hookers/src/main/java/com/swift/sandhook/hookers/AbsHooker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hookers/src/main/java/com/swift/sandhook/hookers/PluginHooker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hookers/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/art/art_compiler_options.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/art/art_method.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/casts/cast_art_method.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/casts/cast_compiler_options.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/arch.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/arch_base.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/art_compiler_options.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/art_jit.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/art_method.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/art_runtime.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/cast.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/cast_art_method.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/cast_compiler_options.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/dlfcn_nougat.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/elf_util.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/hide_api.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/inst.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/log.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/native_hook.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/never_call.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/offset.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/sandhook.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/trampoline.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/trampoline_manager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/includes/utils.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/inst/insts_arm32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/inst/insts_arm64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/nativehook/native_hook.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/sandhook.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/trampoline/arch/arm32.S" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/trampoline/arch/arm64.S" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/trampoline/trampoline.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/trampoline/trampoline_manager.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/utils/dlfcn_nougat.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/utils/elf_util.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/utils/hide_api.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/utils/lock.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/utils/offset.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/cpp/utils/utils.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/ArtMethodSizeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/ClassNeverCall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/HookLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/PendingHookHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/SandHook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/SandHookConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/SandHookMethodResolver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/blacklist/HookBlackList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/utils/ArtDexOptimizer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/utils/ClassStatusUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/utils/FileUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/utils/ParamWrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/utils/ReflectionUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/utils/Unsafe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/wrapper/HookErrorException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/wrapper/HookWrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/java/com/swift/sandhook/wrapper/StubMethodsFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hooklib/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/assembler/assembler_arm32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/assembler/assembler_arm32.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/decoder/decoder_arm32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/decoder/decoder_arm32.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/hook/breakpoint_shellcode.S" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/hook/hook_arm32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/hook/hook_arm32.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/inst/arm32_base.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/inst/inst_arm32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/inst/inst_arm32.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/inst/inst_code_arm32.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/inst/inst_struct_a32.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/inst/inst_struct_t16.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/inst/inst_struct_t32.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/inst/inst_t16.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/inst/inst_t16.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/inst/inst_t32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/inst/inst_t32.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/register/register_arm32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/register/register_arm32.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/register/register_list_arm32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/register/register_list_arm32.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/relocate/code_relocate_arm32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm32/relocate/code_relocate_arm32.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/assembler/assembler_arm64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/assembler/assembler_arm64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/decoder/decoder_arm64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/decoder/decoder_arm64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/hook/hook_arm64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/hook/hook_arm64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/inst/inst_arm64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/inst/inst_arm64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/inst/inst_code_arm64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/inst/inst_struct_aarch64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/register/register_arm64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/register/register_arm64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/register/register_list_arm64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/register/register_list_arm64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/relocate/code_relocate_arm64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm64/relocate/code_relocate_arm64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/arm_base.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/arm/shellcode_arm.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/archs/x86/place_holder.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/asm/cpu.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/asm/data.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/asm/instruction.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/asm/label.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/asm/ram.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/asm/register.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/asm/unit.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/assembler/assembler.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/buffer/code_buffer.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/buffer/code_buffer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/decoder/decoder.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/elf/elf.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/hook/hook.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/includes/assembler.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/includes/base.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/includes/code_relocate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/includes/compiler.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/includes/decoder.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/includes/elf.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/includes/exception.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/includes/hook.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/relocate/code_relocate.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/sandhook_native.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/sandhook_native.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/utils/lock.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/utils/log.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/utils/platform.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/cpp/utils/platform.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/java/com/swift/sandhook/nativehook/NativeHook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nativehook/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/genhookstubs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/AnnotationId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/AppDataDirGuesser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/BinaryOp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/Code.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/Comparison.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/DexMaker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/FieldId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/Label.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/Local.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/MethodId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/TypeId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/TypeList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/UnaryOp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/dx/stock/ProxyBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/android/internal/util/XmlUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/XposedCompat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/classloaders/ProxyClassLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/hookstub/CallOriginCallBack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/hookstub/HookMethodEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/hookstub/HookStubManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/hookstub/MethodHookerStubs32.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/hookstub/MethodHookerStubs64.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/methodgen/DynamicBridge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/methodgen/ErrorCatch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/methodgen/HookMaker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/methodgen/HookerDexMaker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/methodgen/HookerDexMakerNew.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/utils/ApplicationUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/utils/DexLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/utils/DexMakerUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/utils/FileUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/com/swift/sandhook/xposedcompat/utils/ProcessUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/IXposedHookCmdInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/IXposedHookInitPackageResources.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/IXposedHookLoadPackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/IXposedHookZygoteInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/IXposedMod.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/SELinuxHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/XC_MethodHook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/XC_MethodReplacement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/XSharedPreferences.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/XposedBridge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/XposedHelpers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/XposedInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/callbacks/IXUnhook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/callbacks/XC_InitPackageResources.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/callbacks/XC_LayoutInflated.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/callbacks/XC_LoadPackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/callbacks/XCallback.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/callbacks/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/services/BaseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/services/DirectAccessService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/de/robv/android/xposed/services/FileResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/ArrayUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/CharSequenceUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/CharUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/ClassUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/JavaVersion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/ObjectUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/StringUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/SystemUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/Validate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/builder/Builder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/builder/CompareToBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/builder/EqualsBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/builder/HashCodeBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/builder/IDKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/builder/ReflectionToStringBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/builder/ToStringBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/builder/ToStringStyle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/exception/CloneFailedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/mutable/Mutable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/mutable/MutableInt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/reflect/MemberUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/reflect/MethodUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/tuple/ImmutablePair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/java/external/org/apache/commons/lang3/tuple/Pair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/art_jni_trampoline.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/art_jni_trampoline.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/aarch64/ffi_arm64.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/aarch64/internal.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/aarch64/sysv_arm64.S" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/arm/ffi_armv7.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/arm/internal.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/arm/sysv_armv7.S" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/closures.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/debug.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/dlmalloc.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/ffi.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/ffi_cfi.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/ffi_common.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/ffi_cxx.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/ffi_cxx.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/fficonfig.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/ffitarget.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/java_raw_api.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/ffi_arm64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/ffi_armv7.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/ffi_i386.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/ffi_x86_64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/fficonfig_arm64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/fficonfig_armv7.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/fficonfig_i386.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/fficonfig_x86_64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/ffitarget_arm64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/ffitarget_armv7.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/ffitarget_i386.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/platform_include/ffitarget_x86_64.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/prep_cif.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/raw_api.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/cpp/libffi/types.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/com/android/internal/util/XmlUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/com/swift/sandhook/xposedcompat/HookInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/com/swift/sandhook/xposedcompat/XposedCompat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/com/swift/sandhook/xposedcompat/utils/ApplicationUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/com/swift/sandhook/xposedcompat/utils/ClassUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/com/swift/sandhook/xposedcompat/utils/ProcessUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/com/swift/sandhook/xposedcompat/utils/ProxyClassLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/IXposedHookCmdInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/IXposedHookInitPackageResources.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/IXposedHookLoadPackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/IXposedHookZygoteInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/IXposedMod.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/SELinuxHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/XC_MethodHook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/XC_MethodReplacement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/XSharedPreferences.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/XposedBridge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/XposedHelpers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/XposedInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/callbacks/IXUnhook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/callbacks/XC_InitPackageResources.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/callbacks/XC_LayoutInflated.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/callbacks/XC_LoadPackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/callbacks/XCallback.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/callbacks/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/services/BaseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/services/DirectAccessService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/de/robv/android/xposed/services/FileResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/ArrayUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/CharSequenceUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/CharUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/ClassUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/JavaVersion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/ObjectUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/StringUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/SystemUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/Validate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/builder/Builder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/builder/CompareToBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/builder/EqualsBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/builder/HashCodeBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/builder/IDKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/builder/ReflectionToStringBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/builder/ToStringBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/builder/ToStringStyle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/exception/CloneFailedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/mutable/Mutable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/mutable/MutableInt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/reflect/MemberUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/reflect/MethodUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/tuple/ImmutablePair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/java/external/org/apache/commons/lang3/tuple/Pair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/jniLibs/arm64-v8a/libsandhook-native.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/jniLibs/armeabi-v7a/libsandhook-native.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xposedcompat_new/src/main/res/values/strings.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Class.forName</find>
+    </findStrings>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="BUILD_TARGET_KEY" value="apk" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/gradle.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jMfVwjrIfrnqv7PcmKagXzdhrv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="RDex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RDex" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="RDex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RDex" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="RDex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RDex" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RDex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RDex" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RDex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RDex" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RDex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RDex" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RDex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RDex" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RDex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RDex" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rdex" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android.project.structure.last.selected" value="SDK Location" />
+    <property name="android.project.structure.proportion" value="0.15" />
+    <property name="android.sdk.path" value="/opt/android-sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.31914893" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.alien.rdex" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/libs" />
+      <recent name="$PROJECT_DIR$/app/libs" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="RDex.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0cec7ac6-e417-4a5e-9960-5a47f72cadd0" name="Default Changelist" comment="" />
+      <created>1597321387026</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597321387026</updated>
+    </task>
+    <servers />
+  </component>
+</project>
