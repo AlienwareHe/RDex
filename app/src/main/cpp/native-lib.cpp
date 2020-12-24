@@ -94,9 +94,11 @@ int dump_complete_dex(art::DexFile *dexFile, char *save_path) {
 
 void convert_java_array_to_dexfiles(JNIEnv *env, jobject mCookie,
                                     std::vector<const art::DexFile *> &dex_files) {
-    if (SDK_INT == 26) {
+    if (SDK_INT >= 26) {
         // android_8.0
         toDexFiles_8_0(env, mCookie, dex_files);
+    }else{
+        ALOGI("安卓8以下直接使用Dex#getBytes方法即可");
     }
 }
 
