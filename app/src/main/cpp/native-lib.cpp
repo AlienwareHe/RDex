@@ -11,6 +11,7 @@
 #include <fstream>
 #include "Helper.h"
 #include "dexfile_art.h"
+#include "dexfile_art_10.h"
 
 extern int SDK_INT = 0;
 
@@ -130,6 +131,8 @@ bool toDexFiles_8_0(JNIEnv *env, jobject mCookie, std::vector<const art::DexFile
     for (jsize i = 1; i < array_size; ++i) {
         dex_files.push_back(
                 reinterpret_cast<const art::DexFile *>(static_cast<uintptr_t>(long_data[i])));
+
+        reinterpret_cast<const DexFile_10 *>(static_cast<uintptr_t>(long_data[i]));
     }
 
     return true;
