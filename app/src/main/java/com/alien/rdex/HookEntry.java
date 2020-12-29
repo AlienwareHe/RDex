@@ -4,12 +4,6 @@ import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 
-import com.camel.api.CamelToolKit;
-import com.camel.api.rposed.IRposedHookLoadPackage;
-import com.camel.api.rposed.RC_MethodHook;
-import com.camel.api.rposed.RposedBridge;
-import com.camel.api.rposed.RposedHelpers;
-import com.camel.api.rposed.callbacks.RC_LoadPackage;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,8 +17,13 @@ import java.util.Set;
 
 import camel.external.org.apache.commons.io.FileUtils;
 import dalvik.system.DexFile;
+import de.robv.android.xposed.IXposedHookLoadPackage;
+import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XposedBridge;
+import de.robv.android.xposed.XposedHelpers;
+import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-public class HookEntry implements IRposedHookLoadPackage {
+public class HookEntry implements IXposedHookLoadPackage {
 
 
     public static final String TAG = "RDEX";
@@ -34,10 +33,10 @@ public class HookEntry implements IRposedHookLoadPackage {
     private static Method getDexMethod;
     private static boolean isJustInTime = false;
     private static Set<ClassLoader> classLoaders = new HashSet<>();
-    private static String dexSaveDir = CamelToolKit.whiteSdcardDirPath + "/";
+    private static String dexSaveDir = "/sdcard/";
 
     @Override
-    public void handleLoadPackage(RC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
+    public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         Log.i(TAG, "rdex plugin hooked start");
 
         if (!loadPackageParam.processName.equals(loadPackageParam.packageName)) {
@@ -71,9 +70,9 @@ public class HookEntry implements IRposedHookLoadPackage {
         Log.i(TAG, "rdex plugin hooked finish");
     }
 
-    private void internalHook(RC_LoadPackage.LoadPackageParam loadPackageParam) {
+    private void internalHook(XC_LoadPackage.LoadPackageParam loadPackageParam) {
 
-        RposedBridge.hookAllMethods(ClassLoader.class, "loadClass", new RC_MethodHook() {
+        XposedBridge.hookAllMethods(ClassLoader.class, "loadClass", new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 final Class cls = (Class) param.getResult();
@@ -169,15 +168,15 @@ public class HookEntry implements IRposedHookLoadPackage {
      */
     private void dumpDexByCookie(Class mClass) {
         ClassLoader classLoader = mClass.getClassLoader();
-        Object pathList = RposedHelpers.getObjectField(classLoader, "pathList");
-        Object[] dexElements = (Object[]) RposedHelpers.getObjectField(pathList, "dexElements");
+        Object pathList = XposedHelpers.getObjectField(classLoader, "pathList");
+        Object[] dexElements = (Object[]) XposedHelpers.getObjectField(pathList, "dexElements");
         for (Object dexElement : dexElements) {
-            Object dexFile = RposedHelpers.getObjectField(dexElement, "dexFile");
+            Object dexFile = XposedHelpers.getObjectField(dexElement, "dexFile");
             if (dexFile == null) {
                 Log.w(TAG, "dexFile is null.....");
                 continue;
             }
-            Object mCookie = RposedHelpers.getObjectField(dexFile, "mCookie");
+            Object mCookie = XposedHelpers.getObjectField(dexFile, "mCookie");
             if (foundCookies.contains(mCookie)) {
                 continue;
             }
@@ -192,7 +191,7 @@ public class HookEntry implements IRposedHookLoadPackage {
             return;
         }
         //判断 这个 classloader是否 需要保存
-        String dumpDexPath = CamelToolKit.whiteSdcardDirPath + "/dump_" + bytes.length + ".dex";
+        String dumpDexPath = "/sdcard/dump_" + bytes.length + ".dex";
         File file = new File(dumpDexPath);
         if (!file.exists()) {
             //不存在的时候 在保存
