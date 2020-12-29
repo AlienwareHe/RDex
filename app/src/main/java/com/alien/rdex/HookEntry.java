@@ -19,6 +19,7 @@ import camel.external.org.apache.commons.io.FileUtils;
 import dalvik.system.DexFile;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
@@ -35,6 +36,13 @@ public class HookEntry implements IXposedHookLoadPackage {
     private static Set<ClassLoader> classLoaders = new HashSet<>();
     private static String dexSaveDir = "/sdcard/";
 
+    /**
+     * 进行 注入的 app 名字
+     */
+    private static volatile String InvokPackage = null;
+    private boolean isNeedInvoke = false;
+    private XSharedPreferences shared;
+
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         Log.i(TAG, "rdex plugin hooked start");
@@ -45,6 +53,18 @@ public class HookEntry implements IXposedHookLoadPackage {
         }
 
         try {
+            shared = new XSharedPreferences(BuildConfig.APPLICATION_ID, "config");
+            shared.reload();
+            InvokPackage = shared.getString("APP_INFO", "");
+            isNeedInvoke = shared.getBoolean("NeedInvoke", false);
+
+            //先重启 选择 好 要进行Hook的 app
+            if ("".equals(InvokPackage) || !loadPackageParam.packageName.equals(InvokPackage)) {
+                return;
+            }
+            Log.e("TAG", "发现 被Hook App" + loadPackageParam.packageName);
+            Log.e("TAG", "是否需要 反射调用   " + isNeedInvoke);
+
             JNILoadHelper.loadLibrary("native-lib", this.getClass().getClassLoader());
 
             internalHook(loadPackageParam);
