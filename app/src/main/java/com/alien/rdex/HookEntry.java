@@ -1,9 +1,19 @@
 package com.alien.rdex;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 
+
+import com.android.system.ISystemLoadPackage;
+import com.android.system.MethodHook;
+import com.android.system.SystemBridge;
+import com.android.system.SystemHelpers;
+import com.android.system.XSharedPreferences;
+import com.android.system.callbacks.LoadPackage;
+import com.camel.api.CamelToolKit;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,17 +24,12 @@ import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import camel.external.org.apache.commons.io.FileUtils;
 import dalvik.system.DexFile;
-import de.robv.android.xposed.IXposedHookLoadPackage;
-import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.XSharedPreferences;
-import de.robv.android.xposed.XposedBridge;
-import de.robv.android.xposed.XposedHelpers;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-public class HookEntry implements IXposedHookLoadPackage {
+public class HookEntry implements ISystemLoadPackage {
 
 
     public static final String TAG = "RDEX";
@@ -42,9 +47,10 @@ public class HookEntry implements IXposedHookLoadPackage {
     private static volatile String InvokPackage = null;
     private boolean isNeedInvoke = false;
     private XSharedPreferences shared;
+    private static AtomicBoolean initSo = new AtomicBoolean(false);
 
     @Override
-    public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
+    public void handleLoadPackage(LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         Log.i(TAG, "rdex plugin hooked start");
 
         if (!loadPackageParam.processName.equals(loadPackageParam.packageName)) {
@@ -53,19 +59,32 @@ public class HookEntry implements IXposedHookLoadPackage {
         }
 
         try {
-            shared = new XSharedPreferences(BuildConfig.APPLICATION_ID, "config");
-            shared.reload();
-            InvokPackage = shared.getString("APP_INFO", "");
-            isNeedInvoke = shared.getBoolean("NeedInvoke", false);
+
+            SystemHelpers.findAndHookMethod(Activity.class, "onResume", new MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                    CamelToolKit.sContext = (Context) param.thisObject;
+                    if (!initSo.compareAndSet(false, true)) {
+                        JNILoadHelper.loadLibrary("native-lib", this.getClass().getClassLoader());
+                    }
+                }
+            });
+
+//            shared = new XSharedPreferences(BuildConfig.APPLICATION_ID, "config");
+//            shared.reload();
+//            InvokPackage = shared.getString("APP_INFO", "");
+//            isNeedInvoke = shared.getBoolean("NeedInvoke", false);
 
             //先重启 选择 好 要进行Hook的 app
-            if ("".equals(InvokPackage) || !loadPackageParam.packageName.equals(InvokPackage)) {
+//            if ("".equals(InvokPackage) || !loadPackageParam.packageName.equals(InvokPackage)) {
+//                Log.i(TAG,"Not the target dump app!");
+//                return;
+//            }
+            if (!loadPackageParam.packageName.equals("com.sktelecom.tauth")) {
                 return;
             }
-            Log.e("TAG", "发现 被Hook App" + loadPackageParam.packageName);
-            Log.e("TAG", "是否需要 反射调用   " + isNeedInvoke);
-
-            JNILoadHelper.loadLibrary("native-lib", this.getClass().getClassLoader());
+            Log.e(TAG, "发现 被Hook App" + loadPackageParam.packageName);
+            Log.e(TAG, "是否需要 反射调用   " + isNeedInvoke);
 
             internalHook(loadPackageParam);
 
@@ -90,9 +109,9 @@ public class HookEntry implements IXposedHookLoadPackage {
         Log.i(TAG, "rdex plugin hooked finish");
     }
 
-    private void internalHook(XC_LoadPackage.LoadPackageParam loadPackageParam) {
+    private void internalHook(LoadPackage.LoadPackageParam loadPackageParam) {
 
-        XposedBridge.hookAllMethods(ClassLoader.class, "loadClass", new XC_MethodHook() {
+        SystemBridge.hookAllMethods(ClassLoader.class, "loadClass", new MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 final Class cls = (Class) param.getResult();
@@ -188,20 +207,21 @@ public class HookEntry implements IXposedHookLoadPackage {
      */
     private void dumpDexByCookie(Class mClass) {
         ClassLoader classLoader = mClass.getClassLoader();
-        Object pathList = XposedHelpers.getObjectField(classLoader, "pathList");
-        Object[] dexElements = (Object[]) XposedHelpers.getObjectField(pathList, "dexElements");
+        Object pathList = SystemHelpers.getObjectField(classLoader, "pathList");
+        Object[] dexElements = (Object[]) SystemHelpers.getObjectField(pathList, "dexElements");
         for (Object dexElement : dexElements) {
-            Object dexFile = XposedHelpers.getObjectField(dexElement, "dexFile");
+            Object dexFile = SystemHelpers.getObjectField(dexElement, "dexFile");
             if (dexFile == null) {
                 Log.w(TAG, "dexFile is null.....");
                 continue;
             }
-            Object mCookie = XposedHelpers.getObjectField(dexFile, "mCookie");
+            Object mCookie = SystemHelpers.getObjectField(dexFile, "mCookie");
             if (foundCookies.contains(mCookie)) {
                 continue;
             }
-            foundCookies.add(mCookie);
+            foundCookies.add(mCookie);A
             Log.i(TAG, "get mCookie:" + mCookie);
+            dexSaveDir = CamelToolKit.sContext.getFilesDir() +"/";
             NativeDump.fullDump(dexSaveDir, mCookie);
         }
     }
