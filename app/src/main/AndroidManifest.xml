@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
 
+        <provider android:name=".MultiprocessSharedPreferences"
+            android:authorities="com.alien.rdex.MultiprocessSharedPreferences"
+            android:exported="true" />
+
         <meta-data
             android:name="lurkermodule"
             android:value="true" />

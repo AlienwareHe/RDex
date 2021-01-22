@@ -1,17 +1,19 @@
 package com.alien.rdex;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
-
+import android.widget.Toast;
 
 import com.android.system.ISystemLoadPackage;
 import com.android.system.MethodHook;
 import com.android.system.SystemBridge;
 import com.android.system.SystemHelpers;
-import com.android.system.XSharedPreferences;
 import com.android.system.callbacks.LoadPackage;
 import com.camel.api.CamelToolKit;
 
@@ -34,23 +36,22 @@ public class HookEntry implements ISystemLoadPackage {
 
     public static final String TAG = "RDEX";
 
-    private static Class DexClass;
+    private static Class<?> dexClass;
     private static Method getBytesMethod;
     private static Method getDexMethod;
-    private static boolean isJustInTime = false;
-    private static Set<ClassLoader> classLoaders = new HashSet<>();
+    private static final boolean isJustInTime = false;
+    private static final Set<ClassLoader> classLoaders = new HashSet<>();
     private static String dexSaveDir = "/sdcard/";
 
     /**
      * 进行 注入的 app 名字
      */
-    private static volatile String InvokPackage = null;
+    private static volatile String targetDumpPakcage = null;
     private boolean isNeedInvoke = false;
-    private XSharedPreferences shared;
-    private static AtomicBoolean initSo = new AtomicBoolean(false);
+    private static final AtomicBoolean soInited = new AtomicBoolean(false);
 
     @Override
-    public void handleLoadPackage(LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
+    public void handleLoadPackage(final LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         Log.i(TAG, "rdex plugin hooked start");
 
         if (!loadPackageParam.processName.equals(loadPackageParam.packageName)) {
@@ -58,53 +59,54 @@ public class HookEntry implements ISystemLoadPackage {
             return;
         }
 
-        try {
+        internalHook(loadPackageParam);
 
-            SystemHelpers.findAndHookMethod(Activity.class, "onResume", new MethodHook() {
-                @Override
-                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                    CamelToolKit.sContext = (Context) param.thisObject;
-                    if (!initSo.compareAndSet(false, true)) {
-                        JNILoadHelper.loadLibrary("native-lib", this.getClass().getClassLoader());
-                    }
+        SystemHelpers.findAndHookMethod(Activity.class, "onResume", new MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) {
+                CamelToolKit.sContext = (Context) param.thisObject;
+                if (!soInited.compareAndSet(false, true)) {
+                    return;
                 }
-            });
 
-//            shared = new XSharedPreferences(BuildConfig.APPLICATION_ID, "config");
-//            shared.reload();
-//            InvokPackage = shared.getString("APP_INFO", "");
-//            isNeedInvoke = shared.getBoolean("NeedInvoke", false);
+                try {
+                    JNILoadHelper.loadLibrary("native-lib", this.getClass().getClassLoader());
 
-            //先重启 选择 好 要进行Hook的 app
-//            if ("".equals(InvokPackage) || !loadPackageParam.packageName.equals(InvokPackage)) {
-//                Log.i(TAG,"Not the target dump app!");
-//                return;
-//            }
-            if (!loadPackageParam.packageName.equals("com.sktelecom.tauth")) {
-                return;
-            }
-            Log.e(TAG, "发现 被Hook App" + loadPackageParam.packageName);
-            Log.e(TAG, "是否需要 反射调用   " + isNeedInvoke);
+                    dexSaveDir = CamelToolKit.sContext.getFilesDir() + "/";
+                    // 先在插件中选择好要进行Hook的app
+                    MultiprocessSharedPreferences.setAuthority("com.alien.rdex.MultiprocessSharedPreferences");
+                    SharedPreferences sharedPreferences = MultiprocessSharedPreferences.getSharedPreferences(CamelToolKit.sContext, Constants.SP_NAME, Context.MODE_PRIVATE);
+                    targetDumpPakcage = sharedPreferences.getString(Constants.APP_INFO, "");
+                    isNeedInvoke = sharedPreferences.getBoolean(Constants.IS_NEED_INVOKE, false);
 
-            internalHook(loadPackageParam);
-
-            if (!isJustInTime) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (ClassLoader classLoader : classLoaders) {
-                            Object[] nowElements = getClassLoaderElements(classLoader);
-                            if (nowElements != null && nowElements.length != 0) {
-                                dumpAllClass(nowElements, classLoader, null);
-                            }
-                        }
+                    if (TextUtils.isEmpty(targetDumpPakcage) || !loadPackageParam.packageName.equals(targetDumpPakcage)) {
+                        Log.i(TAG, "Not the target dump app:" + targetDumpPakcage + ",current package name:" + loadPackageParam.packageName);
+                        return;
                     }
-                }, 20 * 1000);
-            }
 
-        } catch (Throwable e) {
-            Log.e(TAG, "rdex plugin hooked error:", e);
-        }
+                    Log.e(TAG, "发现 被Hook App" + loadPackageParam.packageName);
+                    Log.e(TAG, "是否需要 反射调用:" + isNeedInvoke);
+
+                    if (!isJustInTime) {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtils.showToast(CamelToolKit.sContext, "找到Classloader数量:" + classLoaders.size());
+                                for (ClassLoader classLoader : classLoaders) {
+                                    Object[] nowElements = getClassLoaderElements(classLoader);
+                                    if (nowElements != null && nowElements.length != 0) {
+                                        dumpAllClass(nowElements, classLoader, null);
+                                    }
+                                }
+                            }
+                        }, 20 * 1000);
+                        ToastUtils.showToast(CamelToolKit.sContext, "20秒后开始DUMP对应DEX文件");
+                    }
+                } catch (Throwable e) {
+                    Log.e(TAG, "dump app failed!", e);
+                }
+            }
+        });
 
         Log.i(TAG, "rdex plugin hooked finish");
     }
@@ -114,7 +116,7 @@ public class HookEntry implements ISystemLoadPackage {
         SystemBridge.hookAllMethods(ClassLoader.class, "loadClass", new MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                final Class cls = (Class) param.getResult();
+                final Class<?> cls = (Class<?>) param.getResult();
                 if (cls == null) {
                     return;
                 }
@@ -128,7 +130,7 @@ public class HookEntry implements ISystemLoadPackage {
      *
      * @param cls 目标class
      */
-    private void handleClass(Class cls) {
+    private void handleClass(Class<?> cls) {
         ClassLoader classLoader = cls.getClassLoader();
         if (classLoader == null) {
             Log.i(TAG, "classloader is null:" + cls);
@@ -136,6 +138,7 @@ public class HookEntry implements ISystemLoadPackage {
         }
 
         if (!isJustInTime) {
+            Log.i(TAG,"监听到新的classLoader:" + classLoader);
             classLoaders.add(classLoader);
         } else {
             Object[] nowElements = getClassLoaderElements(classLoader);
@@ -152,6 +155,7 @@ public class HookEntry implements ISystemLoadPackage {
             @Override
             public void run() {
                 try {
+                    ToastUtils.showToast(CamelToolKit.sContext, "找到dexElements数量:" + dexElements.length);
                     for (Object dexElement : dexElements) {
                         //每一个 elememt里面都有一个 dex文件
                         Field dexFileField = dexElement.getClass().getDeclaredField("dexFile");
@@ -162,7 +166,7 @@ public class HookEntry implements ISystemLoadPackage {
                             continue;
                         }
                         //初始化每个类，防止填充式类抽取
-                        Class firstClass = initAllClass(dexFile, classLoader);
+                        Class<?> firstClass = initAllClass(dexFile, classLoader);
                         if (!isJustInTime && firstClass != null) {
                             saveDexForClass(firstClass);
                         }
@@ -180,7 +184,7 @@ public class HookEntry implements ISystemLoadPackage {
     /**
      * 根据 一个 Class保存 dex文件
      */
-    private void saveDexForClass(Class mClass) {
+    private void saveDexForClass(Class<?> mClass) {
         try {
             if (Build.VERSION.SDK_INT <= 25) {
                 // 安卓7.1 可直接使用getDex方法
@@ -198,14 +202,14 @@ public class HookEntry implements ISystemLoadPackage {
         }
     }
 
-    private HashSet<Object> foundCookies = new HashSet<>();
+    private final HashSet<Object> foundCookies = new HashSet<>();
 
     /**
      * 通过mCookie dump类所对应的ClassLoader下所有的dex
      * <p>
      * 实际上可能有很多重复行为，因为一个classloader下有很多class，因此加了个mCookie集合去重稍微减少重复
      */
-    private void dumpDexByCookie(Class mClass) {
+    private void dumpDexByCookie(Class<?> mClass) {
         ClassLoader classLoader = mClass.getClassLoader();
         Object pathList = SystemHelpers.getObjectField(classLoader, "pathList");
         Object[] dexElements = (Object[]) SystemHelpers.getObjectField(pathList, "dexElements");
@@ -219,9 +223,8 @@ public class HookEntry implements ISystemLoadPackage {
             if (foundCookies.contains(mCookie)) {
                 continue;
             }
-            foundCookies.add(mCookie);A
+            foundCookies.add(mCookie);
             Log.i(TAG, "get mCookie:" + mCookie);
-            dexSaveDir = CamelToolKit.sContext.getFilesDir() +"/";
             NativeDump.fullDump(dexSaveDir, mCookie);
         }
     }
@@ -231,7 +234,7 @@ public class HookEntry implements ISystemLoadPackage {
             return;
         }
         //判断 这个 classloader是否 需要保存
-        String dumpDexPath = "/sdcard/dump_" + bytes.length + ".dex";
+        String dumpDexPath = dexSaveDir + bytes.length + ".dex";
         File file = new File(dumpDexPath);
         if (!file.exists()) {
             //不存在的时候 在保存
@@ -240,7 +243,7 @@ public class HookEntry implements ISystemLoadPackage {
         }
     }
 
-    private Object getDexInClass(Class cls) {
+    private Object getDexInClass(Class<?> cls) {
         Object dex = null;
         try {
             if (cls == null) {
@@ -256,14 +259,15 @@ public class HookEntry implements ISystemLoadPackage {
     /**
      * 初始化反射需要调用的Dex.getBytes和Class.getDex等方法
      */
+    @SuppressLint("PrivateApi")
     private static void initDexInvokeMethod() {
-        if (DexClass == null || getBytesMethod == null || getDexMethod == null) {
+        if (dexClass == null || getBytesMethod == null || getDexMethod == null) {
             try {
-                DexClass = Class.forName("com.android.dex.Dex");
-                getBytesMethod = DexClass.getDeclaredMethod("getBytes");
+                dexClass = Class.forName("com.android.dex.Dex");
+                getBytesMethod = dexClass.getDeclaredMethod("getBytes");
                 getBytesMethod.setAccessible(true);
                 //先拿到 class里面的 getDex方法
-                Class classes = Class.forName("java.lang.Class");
+                Class<?> classes = Class.forName("java.lang.Class");
                 getDexMethod = classes.getDeclaredMethod("getDex");
                 getDexMethod.setAccessible(true);
             } catch (Throwable e) {
@@ -272,11 +276,11 @@ public class HookEntry implements ISystemLoadPackage {
         }
     }
 
-    private synchronized Class initAllClass(DexFile dexFile, final ClassLoader loader) {
+    private synchronized Class<?> initAllClass(DexFile dexFile, final ClassLoader loader) {
         int classSize = getDexFileClassSize(dexFile);
         Log.e(TAG, "需要 加载的 getDexFileClassName个数:" + classSize);
 
-        final List<Class> initialClasses = new ArrayList<>();
+        final List<Class<?>> initialClasses = new ArrayList<>();
 
         try {
 
@@ -325,6 +329,7 @@ public class HookEntry implements ISystemLoadPackage {
             }
             pathListField.setAccessible(true);
             Object dexPathList = pathListField.get(loader);
+            assert dexPathList != null;
             Field dexElementsField = dexPathList.getClass().getDeclaredField("dexElements");
             dexElementsField.setAccessible(true);
             Object[] dexElements = (Object[]) dexElementsField.get(dexPathList);
@@ -347,7 +352,7 @@ public class HookEntry implements ISystemLoadPackage {
      */
     private Field getPathListField(ClassLoader classLoader) {
         Field pathListField = null;
-        Class classLoaderClass = classLoader.getClass();
+        Class<?> classLoaderClass = classLoader.getClass();
         int maxFindLength = 5;
         while (classLoaderClass != null && pathListField == null && (maxFindLength--) > 0) {
             try {

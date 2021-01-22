@@ -1,6 +1,7 @@
 package com.alien.rdex;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PixelFormat;
@@ -19,21 +20,13 @@ import android.widget.TextView;
 import java.io.File;
 import java.util.ArrayList;
 
-
-/**
- * Created by lyh on 2019/2/14.
- */
 public class MainListViewAdapter extends BaseAdapter {
-
-    public static String APP_INFO = "APP_INFO";
-    public static String NeedInvoke = "NeedInvoke";
-
 
     private ArrayList<AppBean> data;
 
-    private Context mContext;
+    private final Context mContext;
 
-    private CheckBox cb_invoke;
+    private final CheckBox cb_invoke;
 
 
     public MainListViewAdapter(Context context, ArrayList<AppBean> data, CheckBox cb_invoke) {
@@ -79,10 +72,10 @@ public class MainListViewAdapter extends BaseAdapter {
         holder.tv_appName.setText(appBean.appName);
         holder.tv_packageName.setText(appBean.packageName);
 
-        holder.All.setOnClickListener(new View.OnClickListener() {
+        holder.all.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
-                                              MainListViewAdapter.this.Save(position);
+                                              MainListViewAdapter.this.save(position);
                                           }
                                       }
         );
@@ -109,49 +102,36 @@ public class MainListViewAdapter extends BaseAdapter {
         }
     }
 
-
-    private void DeletedOATFile(String getPackageName) {
+    private void deletedOATFile(String getPackageName) {
         //删掉 OAT FILE
-        File file = new File("/data/app/" + getPackageName + "/oat");
-        if (file.exists()) {
-            Log.i("TAG", "发现 OAT 文件尝试删除");
-            RootUtils.execShell("rm -r " + file.getPath());
-            return;
-        }
-        File file1 = new File("/data/app/" + getPackageName + "-1/oat");
-        if (file1.exists()) {
-            RootUtils.execShell("rm -r " + file1.getPath());
-            Log.i("TAG", "删除OAT文件成功");
-            return;
-        }
-        File file2 = new File("/data/app/" + getPackageName + "-2/oat");
-        if (file2.exists()) {
-            RootUtils.execShell("rm -r " + file2.getPath());
-            return;
-        }
-        File file3 = new File("/data/app/" + getPackageName + "-3/oat");
-        if (file3.exists()) {
-            RootUtils.execShell("rm -r " + file3.getPath());
-            return;
+        for (int i = 0; i < 4; i++) {
+            File file = new File("/data/app/" + getPackageName + (i == 0 ? "/oat" : "-" + i + "/oat"));
+            if (file.exists()) {
+                Log.i("TAG", "发现 OAT 文件尝试删除");
+                RootUtils.execShell("rm -r " + file.getPath());
+                return;
+            }
         }
     }
 
-    private void Save(int position) {
-        SpUtil.putString(mContext, APP_INFO, data.get(position).packageName);
-        SpUtil.putBoolean(mContext, NeedInvoke, cb_invoke.isChecked());
+    private void save(int position) {
+        SharedPreferences.Editor editor = MultiprocessSharedPreferences.getSharedPreferences(mContext, Constants.SP_NAME, Context.MODE_PRIVATE).edit();
+        editor.putString(Constants.APP_INFO,data.get(position).packageName);
+        editor.putBoolean(Constants.IS_NEED_INVOKE,cb_invoke.isChecked());
+        editor.apply();
 
-        ToastUtils.showToast(mContext, "保存成功 dex路径为    data/data/" + data.get(position).packageName);
-        DeletedOATFile(data.get(position).packageName);
+        ToastUtils.showToast(mContext, "设置dump目标app:" + data.get(position).packageName);
+        deletedOATFile(data.get(position).packageName);
     }
 
 
     private static class ViewHolder {
         TextView tv_appName, tv_packageName;
-        LinearLayout All;
+        LinearLayout all;
         ImageView iv_appIcon;
 
         ViewHolder(View convertView) {
-            All = convertView.findViewById(R.id.ll_all);
+            all = convertView.findViewById(R.id.ll_all);
             tv_packageName = convertView.findViewById(R.id.tv_packName);
             tv_appName = convertView.findViewById(R.id.tv_appName);
             iv_appIcon = convertView.findViewById(R.id.iv_appIcon);

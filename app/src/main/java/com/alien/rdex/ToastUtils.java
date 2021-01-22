@@ -1,6 +1,7 @@
 package com.alien.rdex;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 public class ToastUtils {
@@ -8,6 +9,7 @@ public class ToastUtils {
     private static Toast toast;
 
     public static void showToast(final Context context, final String msg) {
+        Log.i(HookEntry.TAG,msg);
         ThreadUtils.runOnMainThread(new Runnable() {
             @Override
             public void run() {
