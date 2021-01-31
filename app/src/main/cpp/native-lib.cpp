@@ -11,7 +11,6 @@
 #include <fstream>
 #include "Helper.h"
 #include "dexfile_art.h"
-#include "dexfile_art_10.h"
 
 extern int SDK_INT = 0;
 
@@ -69,17 +68,6 @@ Java_com_alien_rdex_NativeDump_fullDump(JNIEnv *env, jclass clazz, jstring dump_
 }
 
 int dump_complete_dex(art::DexFile *dexFile, char *save_path) {
-
-    // TODO 判断是否是系统DEX
-
-
-//    DexUtil *dexUtil = new DexUtil((u1 *) dexFile);
-//    if (!dexUtil->isDex((u1 *) dexFile)) {
-//        ALOGI("[*] current dexFile is not dex");
-//        return JNI_ERR;
-//    }
-
-
     int fd = open(save_path, O_CREAT | O_EXCL | O_WRONLY, 0777);
     if (fd < 0) {
         ALOGE("[-] create file %s failed, %s", save_path, strerror(errno));
@@ -88,7 +76,6 @@ int dump_complete_dex(art::DexFile *dexFile, char *save_path) {
 
     write(fd, dexFile->begin_, dexFile->size_);
     close(fd);
-//    dexUtil = nullptr;
     return JNI_OK;
 }
 
@@ -117,7 +104,6 @@ bool toDexFiles_8_0(JNIEnv *env, jobject mCookie, std::vector<const art::DexFile
         return false;
     }
 
-    // TODO: Optimize. On 32bit we can use an int array.
     jboolean is_long_data_copied;
     jlong *long_data = env->GetLongArrayElements(reinterpret_cast<jlongArray>(array),
                                                  &is_long_data_copied);
@@ -131,8 +117,6 @@ bool toDexFiles_8_0(JNIEnv *env, jobject mCookie, std::vector<const art::DexFile
     for (jsize i = 1; i < array_size; ++i) {
         dex_files.push_back(
                 reinterpret_cast<const art::DexFile *>(static_cast<uintptr_t>(long_data[i])));
-
-        reinterpret_cast<const DexFile_10 *>(static_cast<uintptr_t>(long_data[i]));
     }
 
     return true;
