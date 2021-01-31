@@ -21,13 +21,7 @@
 
         <meta-data android:name="xposedmodule" android:value="true"/>
 
-        <meta-data android:name="xposeddescription" android:value="脱壳机"/>
-
-        <meta-data android:name="for_camel_apps" android:value="com.baidu.homework"/>
-
-        <meta-data
-            android:name="virtualEnvModel"
-            android:value="DISABLE" />
+        <meta-data android:name="xposeddescription" android:value="RDEX脱壳机"/>
     </application>
 
 
