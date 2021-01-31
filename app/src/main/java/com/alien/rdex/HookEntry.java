@@ -1,5 +1,6 @@
 package com.alien.rdex;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
@@ -19,6 +20,7 @@ import camel.external.org.apache.commons.io.FileUtils;
 import dalvik.system.DexFile;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
@@ -33,19 +35,17 @@ public class HookEntry implements IXposedHookLoadPackage {
     private static Method getBytesMethod;
     private static Method getDexMethod;
     private static boolean isJustInTime = false;
-    private static Set<ClassLoader> classLoaders = new HashSet<>();
+    private static final Set<ClassLoader> classLoaders = new HashSet<>();
     private static String dexSaveDir = "/sdcard/";
 
-    /**
-     * 进行 注入的 app 名字
-     */
-    private static volatile String InvokPackage = null;
-    private boolean isNeedInvoke = false;
-    private XSharedPreferences shared;
-
+    @SuppressLint("SdCardPath")
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         Log.i(TAG, "rdex plugin hooked start");
+
+        if (loadPackageParam.packageName.equals("com.alien.rdex")) {
+            XposedHelpers.findAndHookMethod("android.app.ContextImpl", loadPackageParam.classLoader, "checkMode", int.class, XC_MethodReplacement.returnConstant(null));
+        }
 
         if (!loadPackageParam.processName.equals(loadPackageParam.packageName)) {
             Log.i(TAG, "rdex plugin not in main process,ignored:" + loadPackageParam.processName);
@@ -53,19 +53,24 @@ public class HookEntry implements IXposedHookLoadPackage {
         }
 
         try {
-            shared = new XSharedPreferences(BuildConfig.APPLICATION_ID, "config");
-            shared.reload();
-            InvokPackage = shared.getString("APP_INFO", "");
-            isNeedInvoke = shared.getBoolean("NeedInvoke", false);
+            XSharedPreferences sharedPreferences = new XSharedPreferences(BuildConfig.APPLICATION_ID, "config");
+            sharedPreferences.reload();
+            /**
+             * 进行 注入的 app 名字
+             */
+            String targetPackageName = sharedPreferences.getString("APP_INFO", "");
+            boolean isNeedInvoke = sharedPreferences.getBoolean("NeedInvoke", false);
 
             //先重启 选择 好 要进行Hook的 app
-            if ("".equals(InvokPackage) || !loadPackageParam.packageName.equals(InvokPackage)) {
+            if ("".equals(targetPackageName) || !loadPackageParam.packageName.equals(targetPackageName)) {
                 return;
             }
             Log.e("TAG", "发现 被Hook App" + loadPackageParam.packageName);
             Log.e("TAG", "是否需要 反射调用   " + isNeedInvoke);
 
             JNILoadHelper.loadLibrary("native-lib", this.getClass().getClassLoader());
+
+            dexSaveDir = "/data/data/" + targetPackageName + "/";
 
             internalHook(loadPackageParam);
 
@@ -179,7 +184,7 @@ public class HookEntry implements IXposedHookLoadPackage {
         }
     }
 
-    private HashSet<Object> foundCookies = new HashSet<>();
+    private final HashSet<Object> foundCookies = new HashSet<>();
 
     /**
      * 通过mCookie dump类所对应的ClassLoader下所有的dex
