@@ -37,6 +37,7 @@ public class HookEntry implements IXposedHookLoadPackage {
     private static boolean isJustInTime = false;
     private static final Set<ClassLoader> classLoaders = new HashSet<>();
     private static String dexSaveDir = "/sdcard/";
+    private static String pkgName = "";
 
     @SuppressLint("SdCardPath")
     @Override
@@ -67,6 +68,7 @@ public class HookEntry implements IXposedHookLoadPackage {
             }
             Log.e("TAG", "发现 被Hook App" + loadPackageParam.packageName);
             Log.e("TAG", "是否需要 反射调用   " + isNeedInvoke);
+            pkgName = loadPackageParam.packageName;
 
             JNILoadHelper.loadLibrary("native-lib", this.getClass().getClassLoader());
 
@@ -216,7 +218,7 @@ public class HookEntry implements IXposedHookLoadPackage {
             return;
         }
         //判断 这个 classloader是否 需要保存
-        String dumpDexPath = "/sdcard/dump_" + bytes.length + ".dex";
+        String dumpDexPath = "/data/data/" + pkgName + "/dump_" + bytes.length + ".dex";
         File file = new File(dumpDexPath);
         if (!file.exists()) {
             //不存在的时候 在保存
