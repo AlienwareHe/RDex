@@ -6,6 +6,9 @@ import android.os.Build;
 import android.os.Process;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+
+import com.android.system.SystemHelpers;
 import com.camel.api.CamelToolKit;
 import com.camel.api.rposed.RposedHelpers;
 
@@ -21,6 +24,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JNILoadHelper {
+
+    // TODO 64位/32位的so如何加载，不然如果目标为32位应用，需要手动编译仅支持32位的so
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public static void loadLibraryPro(String libName, ClassLoader classLoader){
+        String libPath = "";
+        if(Process.is64Bit()){
+
+        }
+        if(Build.VERSION.SDK_INT >=28){
+            SystemHelpers.callMethod(Runtime.getRuntime(),"nativeLoad",libPath,classLoader);
+        }else{
+            SystemHelpers.callMethod(Runtime.getRuntime(),"doLoad",libPath,classLoader);
+        }
+    }
 
     public static void loadLibrary(String libName, ClassLoader targetClassLoader) {
         try {

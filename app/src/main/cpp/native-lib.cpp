@@ -55,7 +55,7 @@ Java_com_alien_rdex_NativeDump_fullDump(JNIEnv *env, jclass clazz, jstring dump_
     static char save_path[256];
     for (int j = 0; j < dex_files.size(); j++) {
         memset(save_path, 0, 256);
-        snprintf(save_path, 255, "%s%d%s", save_dir, dex_index++, ".dex");
+        snprintf(save_path, 255, "%sclasses%d%s", save_dir, dex_index++, ".dex");
         ALOGI("save path of dex: %s", save_path);
         art::DexFile *dexFile = const_cast<art::DexFile *> (dex_files.at(j));
         if (dexFile == nullptr) {
