@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.system.ISystemLoadPackage;
@@ -22,9 +23,12 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -61,52 +65,56 @@ public class HookEntry implements ISystemLoadPackage {
 
         internalHook(loadPackageParam);
 
-        SystemHelpers.findAndHookMethod(Activity.class, "onResume", new MethodHook() {
-            @Override
-            protected void afterHookedMethod(MethodHookParam param) {
-                CamelToolKit.sContext = (Context) param.thisObject;
-                if (!soInited.compareAndSet(false, true)) {
-                    return;
-                }
 
-                try {
-                    JNILoadHelper.loadLibrary("native-lib", this.getClass().getClassLoader());
 
-                    dexSaveDir = CamelToolKit.sContext.getFilesDir() + "/";
-                    // 先在插件中选择好要进行Hook的app
-                    MultiprocessSharedPreferences.setAuthority("com.alien.rdex.MultiprocessSharedPreferences");
-                    SharedPreferences sharedPreferences = MultiprocessSharedPreferences.getSharedPreferences(CamelToolKit.sContext, Constants.SP_NAME, Context.MODE_PRIVATE);
-                    targetDumpPakcage = sharedPreferences.getString(Constants.APP_INFO, "");
-                    isNeedInvoke = sharedPreferences.getBoolean(Constants.IS_NEED_INVOKE, false);
+        SystemHelpers.findAndHookMethod(Activity.class, "onResume", new
 
-                    if (TextUtils.isEmpty(targetDumpPakcage) || !loadPackageParam.packageName.equals(targetDumpPakcage)) {
-                        Log.i(TAG, "Not the target dump app:" + targetDumpPakcage + ",current package name:" + loadPackageParam.packageName);
-                        return;
-                    }
+                MethodHook() {
+                    @Override
+                    protected void afterHookedMethod(MethodHookParam param) {
+                        CamelToolKit.sContext = (Context) param.thisObject;
+                        if (!soInited.compareAndSet(false, true)) {
+                            return;
+                        }
 
-                    Log.e(TAG, "发现 被Hook App" + loadPackageParam.packageName);
-                    Log.e(TAG, "是否需要 反射调用:" + isNeedInvoke);
+                        try {
+                            JNILoadHelper.loadLibrary("native-lib", this.getClass().getClassLoader());
 
-                    if (!isJustInTime) {
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                ToastUtils.showToast(CamelToolKit.sContext, "找到Classloader数量:" + classLoaders.size());
-                                for (ClassLoader classLoader : classLoaders) {
-                                    Object[] nowElements = getClassLoaderElements(classLoader);
-                                    if (nowElements != null && nowElements.length != 0) {
-                                        dumpAllClass(nowElements, classLoader, null);
-                                    }
-                                }
+                            dexSaveDir = CamelToolKit.sContext.getFilesDir() + "/";
+                            // 先在插件中选择好要进行Hook的app
+                            MultiprocessSharedPreferences.setAuthority("com.alien.rdex.MultiprocessSharedPreferences");
+                            SharedPreferences sharedPreferences = MultiprocessSharedPreferences.getSharedPreferences(CamelToolKit.sContext, Constants.SP_NAME, Context.MODE_PRIVATE);
+                            targetDumpPakcage = sharedPreferences.getString(Constants.APP_INFO, "");
+                            isNeedInvoke = sharedPreferences.getBoolean(Constants.IS_NEED_INVOKE, false);
+
+                            if (TextUtils.isEmpty(targetDumpPakcage) || !loadPackageParam.packageName.equals(targetDumpPakcage)) {
+                                Log.i(TAG, "Not the target dump app:" + targetDumpPakcage + ",current package name:" + loadPackageParam.packageName);
+                                return;
                             }
-                        }, 20 * 1000);
-                        ToastUtils.showToast(CamelToolKit.sContext, "20秒后开始DUMP对应DEX文件");
+
+                            Log.e(TAG, "发现 被Hook App" + loadPackageParam.packageName);
+                            Log.e(TAG, "是否需要 反射调用:" + isNeedInvoke);
+
+                            if (!isJustInTime) {
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ToastUtils.showToast(CamelToolKit.sContext, "找到Classloader数量:" + classLoaders.size());
+                                        for (ClassLoader classLoader : classLoaders) {
+                                            Object[] nowElements = getClassLoaderElements(classLoader);
+                                            if (nowElements != null && nowElements.length != 0) {
+                                                dumpAllClass(nowElements, classLoader, null);
+                                            }
+                                        }
+                                    }
+                                }, 20 * 1000);
+                                ToastUtils.showToast(CamelToolKit.sContext, "20秒后开始DUMP对应DEX文件");
+                            }
+                        } catch (Throwable e) {
+                            Log.e(TAG, "dump app failed!", e);
+                        }
                     }
-                } catch (Throwable e) {
-                    Log.e(TAG, "dump app failed!", e);
-                }
-            }
-        });
+                });
 
         Log.i(TAG, "rdex plugin hooked finish");
     }
@@ -138,7 +146,7 @@ public class HookEntry implements ISystemLoadPackage {
         }
 
         if (!isJustInTime) {
-            Log.i(TAG,"监听到新的classLoader:" + classLoader);
+            Log.i(TAG, "监听到新的classLoader:" + classLoader);
             classLoaders.add(classLoader);
         } else {
             Object[] nowElements = getClassLoaderElements(classLoader);
