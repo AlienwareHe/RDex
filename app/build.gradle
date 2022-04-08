@@ -34,7 +34,6 @@ android {
             signingConfig signingConfigs.release
         }
 
-        //debug ,也使用release的key，hermes代码无法在线调试，所以没有debug的意义
         debug {
             signingConfig signingConfigs.release
         }
@@ -50,6 +49,16 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (variant.buildType.name == "release") {
+                outputFileName = "RDex_v${variant.versionName}_release.apk"
+            } else {
+                outputFileName = "RDex_v${variant.versionName}_debug.apk"
+            }
         }
     }
 }
